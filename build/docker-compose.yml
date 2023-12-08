@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  local:
+    build: ./
+    stdin_open: true
+    tty: true
+    image: seamless_m4t_inference:v0.0.1
+    # ports:
+    #   - 8888:8888
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    volumes:
+      - /mnt/d/code/seamless-m4t-inference-huggingface/:/seamless_m4t_inference
+      - /mnt/d/datasets/:/datasets
+      - /mnt/d/models/:/models
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    shm_size: 32gb
