@@ -19,11 +19,11 @@ ipywidgets==8.0.4
 tqdm==4.66.1
 sentencepiece==0.1.99
 
-num2words
-nltk
-text2digits
-jiwer
-hanziconv
+num2words==0.5.13
+nltk==3.8.1
+text2digits==0.1.0
+jiwer==3.0.0
+hanziconv==0.3.2
 
 tensorboard==2.9.0
 tensorboardX==2.6

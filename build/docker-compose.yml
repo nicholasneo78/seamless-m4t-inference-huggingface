@@ -16,9 +16,9 @@ services:
               count: 1
               capabilities: [gpu]
     volumes:
-      - /mnt/d/code/seamless-m4t-inference-huggingface/:/seamless_m4t_inference
-      - /mnt/d/datasets/:/datasets
-      - /mnt/d/models/:/models
+      - /home/nicholas/code/seamless-m4t-inference-huggingface/:/seamless_m4t_inference
+      - /home/nicholas/datasets/:/datasets
+      - /home/nicholas/models/:/models
     ulimits:
       memlock: -1
       stack: 67108864
