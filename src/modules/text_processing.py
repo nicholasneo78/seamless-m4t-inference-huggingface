@@ -38,29 +38,29 @@ class TextPostProcessingManager:
         if self.language == 'eng':
             return TextPostProcessingEN().process(text=text)
         
-        elif self.language == 'cmn':
+        elif self.language == 'zh':
             # does not matter if the chinese is simplified or traditional
             return TextPostProcessingCJK().process(text=text)
         
-        elif self.language == 'zh_cmn':
+        elif self.language == 'cmn':
             return TextPostProcessingZHSimplified().process(text=text)
             
-        elif self.language == 'zh_yue':
+        elif self.language == 'cmn_Hant':
             return TextPostProcessingZHTraditional().process(text=text)
         
-        elif self.language == 'vi':
+        elif self.language == 'vie':
             return TextPostProcessingVI().process(text=text)
         
-        elif self.language == 'ta':
+        elif self.language == 'tam':
             return TextPostProcessingTA().process(text=text)
         
-        elif self.language == 'tl':
+        elif self.language == 'tgl':
             return TextPostProcessingTL().process(text=text)
         
-        elif self.language == 'id' or self.language == 'ms':
+        elif self.language == 'ind':
             return TextPostProcessingLatin().process(text=text)
         
-        elif self.language == 'th':
+        elif self.language == 'tha':
             return TextPostProcessingTH().process(text=text)
         
         else:
