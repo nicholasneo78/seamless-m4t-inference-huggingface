@@ -1,0 +1,42 @@
+data_root: /datasets/fleurs-en
+model_root: /models/seamless-m4t-v2-large
+
+data_preprocessing:
+  do_split: true
+  no_split:
+    input_manifest_path: ${data_root}/manifest.json
+    output_manifest_path: ${data_root}/manifest_updated.json
+  split:
+    input_manifest_path_train: ${data_root}/train_manifest_m4t.json
+    output_manifest_path_train: ${data_root}/train_m4t.json
+    input_manifest_path_dev: ${data_root}/dev_manifest_m4t.json
+    output_manifest_path_dev: ${data_root}/dev_m4t.json
+    input_manifest_path_test: ${data_root}/test_manifest_m4t.json
+    output_manifest_path_test: ${data_root}/test_m4t.json
+
+evaluate_model:
+  data:
+    manifest_path_test: ${data_root}/test_m4t.json
+    root_path_to_be_removed: /datasets
+    root_path_to_be_replaced: /datasets
+    data_label: fleurs_en
+  model:
+    processor_path: ${model_root}
+    input_model_path: ${model_root}
+    data_loader_batch_size: 4
+    generate_speech: false
+    skip_special_tokens: true
+    is_s2t: true
+    is_t2t: true
+    s2t:
+      output_pred_dir: ${data_root}/pred_manifest_s2t.json
+      input_language: eng
+      output_language: eng
+    t2t:
+      output_pred_dir: ${data_root}/pred_manifest_t2t.json
+      input_language: eng
+      output_language: cmn
+      
+  
+get_metrics_from_json:
+  input_json_dir: ${data_root}/pred_manifest_s2t.json
